@@ -60,13 +60,19 @@
     const closeBtn = document.getElementById("closeBtn");
     const video = document.getElementById("myVideo");
 
-    // Hiện quảng cáo khi video đã sẵn sàng
+    // Kiểm tra nếu quảng cáo đã từng hiển thị
+    const hasSeenAd = localStorage.getItem("hasSeenAd");
+
     video.oncanplay = function() {
-      adBox.style.display = "flex";
+      if (!hasSeenAd) {
+        adBox.style.display = "flex";
+      }
     };
 
-    // Khi nhấn nút quảng cáo → chuyển tới Shopee
     closeBtn.onclick = function() {
+      // Đánh dấu đã xem quảng cáo
+      localStorage.setItem("hasSeenAd", "true");
+      // Chuyển tới Shopee
       window.location.href = "https://shorten.asia/JbGTS2fv";
     };
   </script>
