@@ -22,22 +22,30 @@
       z-index: 999;
     }
     #adContent {
+      position: relative;
       background: #fff;
       color: #000;
-      padding: 20px;
+      padding: 30px 20px 20px;
       border-radius: 8px;
-      max-width: 300px;
+      max-width: 320px;
       text-align: center;
+      box-shadow: 0 0 10px #000;
     }
     #closeBtn {
-      margin-top: 15px;
-      cursor: pointer;
-      padding: 10px 20px;
+      position: absolute;
+      top: 10px;
+      right: 10px;
       background: #f00;
       color: #fff;
       border: none;
-      border-radius: 4px;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
       font-weight: bold;
+      cursor: pointer;
+    }
+    #adContent h2 {
+      margin-top: 0;
     }
   </style>
 </head>
@@ -49,9 +57,9 @@
 
   <div id="adBox">
     <div id="adContent">
-      <h2>🎉 Ưu đãi đặc biệt trên Shopee!</h2>
-      <p>Click để xem sản phẩm hot ngay bây giờ!</p>
-      <button id="closeBtn">Xem ngay</button>
+      <button id="closeBtn">X</button>
+      <h2>🎉 Khuyến mãi đặc biệt!</h2>
+      <p>Click vào dấu X để xem sản phẩm hot trên Shopee!</p>
     </div>
   </div>
 
@@ -60,7 +68,6 @@
     const closeBtn = document.getElementById("closeBtn");
     const video = document.getElementById("myVideo");
 
-    // Kiểm tra nếu quảng cáo đã từng hiển thị
     const hasSeenAd = localStorage.getItem("hasSeenAd");
 
     video.oncanplay = function() {
@@ -70,9 +77,7 @@
     };
 
     closeBtn.onclick = function() {
-      // Đánh dấu đã xem quảng cáo
       localStorage.setItem("hasSeenAd", "true");
-      // Chuyển tới Shopee
       window.location.href = "https://shorten.asia/JbGTS2fv";
     };
   </script>
